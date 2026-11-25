@@ -1,0 +1,52 @@
+@echo off
+chcp 65001 >nul
+title Subir proyecto a GitHub
+
+echo ==========================================
+echo    ASISTENTE PARA SUBIR A GITHUB
+echo ==========================================
+echo.
+
+:: Verificar si Git esta instalado
+git --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [ERROR] Git no esta instalado o no esta en el PATH del sistema.
+    pause
+    exit /b
+)
+
+:: Solicitar la URL del repositorio
+set /p REPO_URL="Pega la URL HTTPS de tu repositorio en GitHub (termina en .git): "
+
+if "%REPO_URL%"=="" (
+    echo [ERROR] No ingresaste ninguna URL.
+    pause
+    exit /b
+)
+
+:: Solicitar el mensaje del commit
+set /p COMMIT_MSG="Escribe el mensaje del commit (Enter para 'Primer commit'): "
+if "%COMMIT_MSG%"=="" set COMMIT_MSG=Primer commit
+
+echo.
+echo Iniciando proceso en: %CD%
+echo.
+
+:: Ejecutar comandos de Git
+git init -b main
+git add .
+git commit -m "%COMMIT_MSG%"
+
+:: Configurar o actualizar el origen remoto
+git remote remove origin >nul 2>&1
+git remote add origin "%REPO_URL%"
+
+echo.
+echo Subiendo archivos a GitHub...
+git push -u origin main
+
+echo.
+echo ==========================================
+echo    PROCESO FINALIZADO
+echo ==========================================
+pause
