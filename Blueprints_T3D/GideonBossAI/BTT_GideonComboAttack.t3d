@@ -1,0 +1,145 @@
+Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="EventReceiveExecuteAI_n_exec_ai"
+   EventReference=(MemberParent=Class'"/Script/AIModule.BTTask_BlueprintBase"',MemberName="ReceiveExecuteAI")
+   bOverrideFunction=True
+   NodePosX=40
+   NodePosY=120
+   NodeGuid=AB9A3042AEA061EE053A51AC30971857
+   CustomProperties Pin (PinId=A98ACC52DCFED72E75741B7C42C9AE97,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SwitchOnInt_n_sw_bt_atk C40537AB2B850903EF803EA8B5B270BA,))
+   CustomProperties Pin (PinId=A0A098AA3B6EFCEA9BCE6440A5598553,PinName="Owner Controller",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="AIC_GideonBoss")
+   CustomProperties Pin (PinId=73745F65E7CB84C194BFDBA479FCFD78,PinName="Controlled Pawn",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="GideonPlayerCharacter")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="GetBlackboard_n_bb_atk"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.AIBlueprintHelperLibrary"',MemberName="GetBlackboard")
+   NodePosX=40
+   NodePosY=290
+   NodeGuid=C2261B2F3D6296DBFF448DF4A355EF62
+   CustomProperties Pin (PinId=3ACF07B44A89ED7C7046EAC8D4BE94C5,PinName="Target",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="Self")
+   CustomProperties Pin (PinId=7216258B36F91C2F44EF39A4A8CE6596,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="BB_GideonBoss",LinkedTo=(GetValueAsInt_n_get_bb_cnt 03019D6A693119E66A30848CF706605F,SetValueAsInt_n_bt_set_cnt 0DBB2D18F4B0B878F90B95606A87C1C1,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="GetValueAsInt_n_get_bb_cnt"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.BlackboardComponent"',MemberName="GetValueAsInt")
+   NodePosX=320
+   NodePosY=290
+   NodeGuid=41C0AD311AEBDDF95B2B70C884DCA440
+   CustomProperties Pin (PinId=03019D6A693119E66A30848CF706605F,PinName="Target",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="BB_GideonBoss",LinkedTo=(GetBlackboard_n_bb_atk 7216258B36F91C2F44EF39A4A8CE6596,))
+   CustomProperties Pin (PinId=C23D8754181B0F68DA26883C862C76D1,PinName="Key Name",Direction="EGPD_Input",PinType.PinCategory="name",DefaultValue="AttackCount")
+   CustomProperties Pin (PinId=9BA9F0B51554DD658EFD2DD08B63A4DC,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="int",DefaultValue="0",LinkedTo=(SwitchOnInt_n_sw_bt_atk 9A07AB4842415F30D846F478DC762689,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_SwitchInteger Name="SwitchOnInt_n_sw_bt_atk"
+   NodePosX=600
+   NodePosY=110
+   NodeGuid=3D5F58423A5F380E0700604CA46841B7
+   CustomProperties Pin (PinId=C40537AB2B850903EF803EA8B5B270BA,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(EventReceiveExecuteAI_n_exec_ai A98ACC52DCFED72E75741B7C42C9AE97,))
+   CustomProperties Pin (PinId=9A07AB4842415F30D846F478DC762689,PinName="Selection",Direction="EGPD_Input",PinType.PinCategory="int",DefaultValue="0",LinkedTo=(GetValueAsInt_n_get_bb_cnt 9BA9F0B51554DD658EFD2DD08B63A4DC,))
+   CustomProperties Pin (PinId=B2C59B5614432E3EA686B5688A745787,PinName="Default",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(PlayAnimMontage_n_bt_atk_a 9C258B9E17134EBA8B36C52489243703,))
+   CustomProperties Pin (PinId=918C83BDBE741D792FF89EC4204364C0,PinName="0",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(PlayAnimMontage_n_bt_atk_a 9C258B9E17134EBA8B36C52489243703,))
+   CustomProperties Pin (PinId=F3550A0C5F3EB8E4AC6BB2E8C109C15D,PinName="1",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(PlayAnimMontage_n_bt_atk_b 08F2BA6DD3F7ADD5DB0517B84DC0D46C,))
+   CustomProperties Pin (PinId=CDFB771F7CDEE6A3B12591BCE2E99F1A,PinName="2",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(PlayAnimMontage_n_bt_atk_c 5899423CB2326620EAAB241C2C051F99,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="PlayAnimMontage_n_bt_atk_a"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.Character"',MemberName="PlayAnimMontage")
+   NodePosX=900
+   NodePosY=10
+   NodeGuid=06F03857F60D306FF0FD0838683A49D6
+   CustomProperties Pin (PinId=9C258B9E17134EBA8B36C52489243703,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SwitchOnInt_n_sw_bt_atk 918C83BDBE741D792FF89EC4204364C0,SwitchOnInt_n_sw_bt_atk B2C59B5614432E3EA686B5688A745787,))
+   CustomProperties Pin (PinId=B021D032595F2FEEE97EFFDCC7685657,PinName="Anim Montage",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="Primary_Attack_A_Medium_Montage")
+   CustomProperties Pin (PinId=7A1A205CF4E598B88EFFB8E46AD2E101,PinName="In Play Rate",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="1")
+   CustomProperties Pin (PinId=D801CB77021D6F93DA1CA4E49C2A162A,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SpawnEmitterAtLocation_n_bt_fx DEF139E0809EA0645E6F99841EA9D9DD,))
+   CustomProperties Pin (PinId=579F0DF3B86D239BEFF22E68265A5A22,PinName="Duration",Direction="EGPD_Output",PinType.PinCategory="float",DefaultValue="0.85")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="PlayAnimMontage_n_bt_atk_b"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.Character"',MemberName="PlayAnimMontage")
+   NodePosX=900
+   NodePosY=140
+   NodeGuid=2C49CB44D86D02B0F424C9F4465A7B09
+   CustomProperties Pin (PinId=08F2BA6DD3F7ADD5DB0517B84DC0D46C,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SwitchOnInt_n_sw_bt_atk F3550A0C5F3EB8E4AC6BB2E8C109C15D,))
+   CustomProperties Pin (PinId=FCBB6CB1D4AFC81D2814A4AC4A98B1A4,PinName="Anim Montage",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="Primary_Attack_B_Medium_Montage")
+   CustomProperties Pin (PinId=A3E0189FA3B5150B00550D943D826CB2,PinName="In Play Rate",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="1")
+   CustomProperties Pin (PinId=9C7AD63489DDD90815A70F3C17EAA0B1,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SpawnEmitterAtLocation_n_bt_fx DEF139E0809EA0645E6F99841EA9D9DD,))
+   CustomProperties Pin (PinId=2623281091BC3E98B79F16880F8B4721,PinName="Duration",Direction="EGPD_Output",PinType.PinCategory="float",DefaultValue="0.85")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="PlayAnimMontage_n_bt_atk_c"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.Character"',MemberName="PlayAnimMontage")
+   NodePosX=900
+   NodePosY=270
+   NodeGuid=CA8144F537A26745FD2323B0A9951EFC
+   CustomProperties Pin (PinId=5899423CB2326620EAAB241C2C051F99,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SwitchOnInt_n_sw_bt_atk CDFB771F7CDEE6A3B12591BCE2E99F1A,))
+   CustomProperties Pin (PinId=625FA3F097EF4A1CF5B0E9EC09D833A5,PinName="Anim Montage",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="Primary_Attack_C_Medium_Montage")
+   CustomProperties Pin (PinId=EA9BC65EB9451E8A53DED8D427726733,PinName="In Play Rate",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="1")
+   CustomProperties Pin (PinId=FF4889B51DB21E41E2FA97F4838567F8,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SpawnEmitterAtLocation_n_bt_fx DEF139E0809EA0645E6F99841EA9D9DD,))
+   CustomProperties Pin (PinId=ED4D2A31383A8809D577A238A60DF1B0,PinName="Duration",Direction="EGPD_Output",PinType.PinCategory="float",DefaultValue="0.85")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="SpawnEmitterAtLocation_n_bt_fx"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.GameplayStatics"',MemberName="SpawnEmitterAtLocation")
+   NodePosX=1200
+   NodePosY=110
+   NodeGuid=D5553549707DFBD9A528CE90EE4A8260
+   CustomProperties Pin (PinId=DEF139E0809EA0645E6F99841EA9D9DD,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(PlayAnimMontage_n_bt_atk_a D801CB77021D6F93DA1CA4E49C2A162A,PlayAnimMontage_n_bt_atk_b 9C7AD63489DDD90815A70F3C17EAA0B1,PlayAnimMontage_n_bt_atk_c FF4889B51DB21E41E2FA97F4838567F8,))
+   CustomProperties Pin (PinId=9E4DC89A13DC4C9E8D9184048DEB3527,PinName="Emitter Template",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="P_ky_darkStorm")
+   CustomProperties Pin (PinId=DF2B816EC5DA38761AF1B9185BED41CF,PinName="Location",Direction="EGPD_Input",PinType.PinCategory="struct",PinType.PinSubCategoryObject=ScriptStruct'"/Script/CoreUObject.Vector"',DefaultValue="{\"x\":0,\"y\":0,\"z\":100}")
+   CustomProperties Pin (PinId=DF06F2A9312EBFE5EE284D4CAF19C65C,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SphereTraceByChannel_n_bt_trace 75C551EFCD60294FB8A578A0535750F6,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="SphereTraceByChannel_n_bt_trace"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.KismetSystemLibrary"',MemberName="SphereTraceSingle")
+   NodePosX=1500
+   NodePosY=110
+   NodeGuid=41471306A96950BAE82E43BC375E2903
+   CustomProperties Pin (PinId=75C551EFCD60294FB8A578A0535750F6,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SpawnEmitterAtLocation_n_bt_fx DF06F2A9312EBFE5EE284D4CAF19C65C,))
+   CustomProperties Pin (PinId=B716107CADF625B81AE035C433C15C01,PinName="Start",Direction="EGPD_Input",PinType.PinCategory="struct",PinType.PinSubCategoryObject=ScriptStruct'"/Script/CoreUObject.Vector"',DefaultValue="{\"x\":0,\"y\":0,\"z\":100}")
+   CustomProperties Pin (PinId=DA6F63A3041B7623DE7415809A2C0F9A,PinName="End",Direction="EGPD_Input",PinType.PinCategory="struct",PinType.PinSubCategoryObject=ScriptStruct'"/Script/CoreUObject.Vector"',DefaultValue="{\"x\":200,\"y\":0,\"z\":100}")
+   CustomProperties Pin (PinId=2ADE9BB40A76F4E420A86F5094418D5D,PinName="Radius",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="140")
+   CustomProperties Pin (PinId=1B8B30D62C4A4BFA37C17B2CB27D3243,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(CastToGreystone_n_bt_cast B090F02BE35AEFBB53CA1F907D6D9602,))
+   CustomProperties Pin (PinId=1787B2E87C8613386B01A1D0E2B16A81,PinName="Out Hit",Direction="EGPD_Output",PinType.PinCategory="struct",PinType.PinSubCategoryObject=ScriptStruct'"/Script/Engine.HitResult"',DefaultValue="null")
+   CustomProperties Pin (PinId=89D14732054541CA8C9406F89B723873,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="bool",DefaultValue="true")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_DynamicCast Name="CastToGreystone_n_bt_cast"
+   TargetType=BlueprintGeneratedClass'"/Game/ModularGothicFantasyEnvironment/DEMO/ThirdPersonBP/Blueprints/Greystone.Greystone_C"'
+   NodePosX=1800
+   NodePosY=110
+   NodeGuid=49B250C2EBBC1DB6A20E4D74758B640F
+   CustomProperties Pin (PinId=B090F02BE35AEFBB53CA1F907D6D9602,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SphereTraceByChannel_n_bt_trace 1B8B30D62C4A4BFA37C17B2CB27D3243,))
+   CustomProperties Pin (PinId=339A573D57740BAD64EE5C90C9437214,PinName="Object",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="Greystone")
+   CustomProperties Pin (PinId=CF4E84D21DFE7576D2B0F1A483C90CCF,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(ApplyDamage_n_bt_dmg 81D4A0D045BB9814C46F38C4DB8CE1AD,))
+   CustomProperties Pin (PinId=10DCF55400ECF270103007249EDB8BC9,PinName="Cast Failed",Direction="EGPD_Output",PinType.PinCategory="exec")
+   CustomProperties Pin (PinId=BB31AA3FAC1507C31724ADFC32227E7A,PinName="As Greystone",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="GreystonePlayerCharacter",LinkedTo=(ApplyDamage_n_bt_dmg 0F03F7A8DED2839CD1D1743440E5FA25,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="ApplyDamage_n_bt_dmg"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.GameplayStatics"',MemberName="ApplyDamage")
+   NodePosX=2100
+   NodePosY=110
+   NodeGuid=FBC6C9592A813D29D147F470B4B64490
+   CustomProperties Pin (PinId=81D4A0D045BB9814C46F38C4DB8CE1AD,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(CastToGreystone_n_bt_cast CF4E84D21DFE7576D2B0F1A483C90CCF,))
+   CustomProperties Pin (PinId=0F03F7A8DED2839CD1D1743440E5FA25,PinName="Damaged Actor",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="Greystone",LinkedTo=(CastToGreystone_n_bt_cast BB31AA3FAC1507C31724ADFC32227E7A,))
+   CustomProperties Pin (PinId=9B95ED72033C5FB698A9B2C49D0B260F,PinName="Base Damage",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="35")
+   CustomProperties Pin (PinId=3EBF54D9EE193855D0A66C8C702E41EC,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SetValueAsInt_n_bt_set_cnt 09C57E6A478A33024E4F4D68D9BD4ABB,))
+   CustomProperties Pin (PinId=DE3A59DD846FB9D55A55E0081A58C06C,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="float",DefaultValue="25")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="RandomIntegerInRange_n_bt_rnd"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.KismetMathLibrary"',MemberName="RandomIntegerInRange")
+   NodePosX=2100
+   NodePosY=290
+   NodeGuid=7320EABFD970B27BAA5058C44747CBC2
+   CustomProperties Pin (PinId=740AD79FE21AD287961005187C2DAB3E,PinName="Min",Direction="EGPD_Input",PinType.PinCategory="int",DefaultValue="0")
+   CustomProperties Pin (PinId=BDF46081ECE26C3951160CB872D51580,PinName="Max",Direction="EGPD_Input",PinType.PinCategory="int",DefaultValue="2")
+   CustomProperties Pin (PinId=5BEE14DB3739F84F6CD7EC94A90E81F6,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="int",DefaultValue="1",LinkedTo=(SetValueAsInt_n_bt_set_cnt DA4287FE8D01CC1A57434BE41336B5A3,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="SetValueAsInt_n_bt_set_cnt"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.BlackboardComponent"',MemberName="SetValueAsInt")
+   NodePosX=2400
+   NodePosY=110
+   NodeGuid=C657B283E18745E727D0F7647FB03C5E
+   CustomProperties Pin (PinId=09C57E6A478A33024E4F4D68D9BD4ABB,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(ApplyDamage_n_bt_dmg 3EBF54D9EE193855D0A66C8C702E41EC,))
+   CustomProperties Pin (PinId=0DBB2D18F4B0B878F90B95606A87C1C1,PinName="Target",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="BB_GideonBoss",LinkedTo=(GetBlackboard_n_bb_atk 7216258B36F91C2F44EF39A4A8CE6596,))
+   CustomProperties Pin (PinId=4A76AAA654B49D361EC23790CA83E48F,PinName="Key Name",Direction="EGPD_Input",PinType.PinCategory="name",DefaultValue="AttackCount")
+   CustomProperties Pin (PinId=DA4287FE8D01CC1A57434BE41336B5A3,PinName="Int Value",Direction="EGPD_Input",PinType.PinCategory="int",DefaultValue="0",LinkedTo=(RandomIntegerInRange_n_bt_rnd 5BEE14DB3739F84F6CD7EC94A90E81F6,))
+   CustomProperties Pin (PinId=A653F1C3EEC9A26B489A53A870FEDBD2,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(FinishExecute_n_bt_finish 7A77030D69C51F3113B21C3CF7F26688,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="FinishExecute_n_bt_finish"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.BTTask_BlueprintBase"',MemberName="FinishExecute")
+   NodePosX=2700
+   NodePosY=110
+   NodeGuid=23EA5A24E6209D7CC5CAC7587817E4C5
+   CustomProperties Pin (PinId=7A77030D69C51F3113B21C3CF7F26688,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SetValueAsInt_n_bt_set_cnt A653F1C3EEC9A26B489A53A870FEDBD2,))
+   CustomProperties Pin (PinId=D3FBC07D37B71205E44CD278A9806BBC,PinName="bSuccess",Direction="EGPD_Input",PinType.PinCategory="bool",DefaultValue="true")
+   CustomProperties Pin (PinId=5292A194D0C1F954825358C04EF680ED,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec")
+End Object

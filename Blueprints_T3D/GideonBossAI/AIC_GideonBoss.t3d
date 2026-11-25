@@ -1,0 +1,58 @@
+Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="EventOnPossess_n_possess"
+   EventReference=(MemberParent=Class'"/Script/AIModule.AIController"',MemberName="ReceivePossess")
+   bOverrideFunction=True
+   NodePosX=60
+   NodePosY=120
+   NodeGuid=745C07C4753D93E401619420EB0AEA5D
+   CustomProperties Pin (PinId=2C51EAB45FB5AFDC73E44568C182D665,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(RunBehaviorTree_n_run_bt 99132C87B65CFC272F4FD0A0286B859E,))
+   CustomProperties Pin (PinId=AE1523522739345A892C1708B90E4DE3,PinName="Possessed Pawn",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="GideonPlayerCharacter")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="RunBehaviorTree_n_run_bt"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.AIController"',MemberName="RunBehaviorTree")
+   NodePosX=360
+   NodePosY=120
+   NodeGuid=556B076E8B7C1C62DE171B0C154B65DB
+   CustomProperties Pin (PinId=99132C87B65CFC272F4FD0A0286B859E,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(EventOnPossess_n_possess 2C51EAB45FB5AFDC73E44568C182D665,))
+   CustomProperties Pin (PinId=E85D374DCED41AC126892D8C50E36378,PinName="BTAsset",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="BT_GideonBoss")
+   CustomProperties Pin (PinId=A11B24BEF3FCBF0252E79BBC6DCBC6BB,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(SetValueAsObject_n_set_target F23087AB2BAB420BD99BC5A0B59C3BB2,))
+   CustomProperties Pin (PinId=BC70CE9A9645CDF22A3503680872B44B,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="bool",DefaultValue="true")
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="GetBlackboard_n_get_bb"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.AIBlueprintHelperLibrary"',MemberName="GetBlackboard")
+   NodePosX=360
+   NodePosY=310
+   NodeGuid=C637DBE7885CD26B4E6B098C166BABD2
+   CustomProperties Pin (PinId=AEE4D1FC0FF0EF4CA1143EB091C796F5,PinName="Target",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="Self")
+   CustomProperties Pin (PinId=E4586AC3F1EBF33F15B399FC6FDC8A86,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="BB_GideonBoss",LinkedTo=(SetValueAsObject_n_set_target E6E0F809BC40D14D5AA029442277A8F4,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="GetPlayerCharacter_n_get_gs"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.GameplayStatics"',MemberName="GetPlayerCharacter")
+   NodePosX=360
+   NodePosY=440
+   NodeGuid=F2003783832DDF5B712DE8D81D1AA6E2
+   CustomProperties Pin (PinId=2463C1BB0BB4F1DF2FD7306495838866,PinName="Player Index",Direction="EGPD_Input",PinType.PinCategory="int",DefaultValue="0")
+   CustomProperties Pin (PinId=C8771327B39F76AF7BE865882DA80F16,PinName="Return Value",Direction="EGPD_Output",PinType.PinCategory="object",DefaultValue="ThirdPersonCharacter",LinkedTo=(SetValueAsObject_n_set_target 4E589A79FFFECAD5B1A650AC61C9B36C,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="SetValueAsObject_n_set_target"
+   FunctionReference=(MemberParent=Class'"/Script/AIModule.BlackboardComponent"',MemberName="SetValueAsObject")
+   NodePosX=700
+   NodePosY=120
+   NodeGuid=4412A842A5DFE9A6E1CD41E43BE8901F
+   CustomProperties Pin (PinId=F23087AB2BAB420BD99BC5A0B59C3BB2,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(RunBehaviorTree_n_run_bt A11B24BEF3FCBF0252E79BBC6DCBC6BB,))
+   CustomProperties Pin (PinId=E6E0F809BC40D14D5AA029442277A8F4,PinName="Target",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="BB_GideonBoss",LinkedTo=(GetBlackboard_n_get_bb E4586AC3F1EBF33F15B399FC6FDC8A86,))
+   CustomProperties Pin (PinId=883036D7F5FDC3A37DCDF5746BCABA1A,PinName="Key Name",Direction="EGPD_Input",PinType.PinCategory="name",DefaultValue="TargetActor")
+   CustomProperties Pin (PinId=4E589A79FFFECAD5B1A650AC61C9B36C,PinName="Object Value",Direction="EGPD_Input",PinType.PinCategory="object",DefaultValue="Greystone",LinkedTo=(GetPlayerCharacter_n_get_gs C8771327B39F76AF7BE865882DA80F16,))
+   CustomProperties Pin (PinId=29C1C45269FCA406403D6054F7CBDDBF,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",LinkedTo=(PrintString_n_aic_log E91CF427564B69FBBF579DDCC87C1042,))
+End Object
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="PrintString_n_aic_log"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.KismetSystemLibrary"',MemberName="PrintString")
+   NodePosX=1020
+   NodePosY=120
+   NodeGuid=223A62CEAE8673768CBC11B830B10ACF
+   CustomProperties Pin (PinId=E91CF427564B69FBBF579DDCC87C1042,PinName="execute",Direction="EGPD_Input",PinType.PinCategory="exec",LinkedTo=(SetValueAsObject_n_set_target 29C1C45269FCA406403D6054F7CBDDBF,))
+   CustomProperties Pin (PinId=BCB861B9FBD3B869476BD9D065E4C1D0,PinName="In String",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="AIC_GideonBoss poseyó a Gideon e inició BT_GideonBoss")
+   CustomProperties Pin (PinId=76EEFCF2A15386B2D7BD7A403F64FF0B,PinName="Print to Screen",Direction="EGPD_Input",PinType.PinCategory="bool",DefaultValue="true")
+   CustomProperties Pin (PinId=A1541B4B5B1E4293FA4A59D8C5293B2A,PinName="Text Color",Direction="EGPD_Input",PinType.PinCategory="string",DefaultValue="#38BDF8")
+   CustomProperties Pin (PinId=3BD14CBA0543ACB63E92E00C9B74D50F,PinName="Duration",Direction="EGPD_Input",PinType.PinCategory="float",DefaultValue="2")
+   CustomProperties Pin (PinId=E4340F1E66EA2E3682DE2128F8DD578F,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec")
+End Object
